@@ -1,0 +1,24 @@
+language: bash
+
+env:
+  - INPUT_LOG="log/worldcupplayerinfo.tsv"
+
+git:
+  submodules: false
+
+os:
+- linux
+
+before_install:
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
+  - sudo apt-get update && sudo apt-get install -y shellcheck
+
+script:
+  - cd "$TRAVIS_BUILD_DIR/ex4/bats-core" && sudo ./install.sh /usr/local
+  - cd "$TRAVIS_BUILD_DIR/ex4" && bats test/t_task2.bats --tap
+#  - cat /tmp/output.log
+
+notifications:
+  email:
+    on_success: never

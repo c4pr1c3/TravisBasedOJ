@@ -1,0 +1,3 @@
+[submodule "ex4/bats-core"]
+	path = ex4/bats-core
+	url = git@github.com:bats-core/bats-core.git
