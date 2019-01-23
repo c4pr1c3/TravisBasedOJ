@@ -15,9 +15,9 @@ before_install:
   - sudo apt-get update && sudo apt-get install -y shellcheck
 
 script:
-  - cd "$TRAVIS_BUILD_DIR/ex4/bats-core" && sudo ./install.sh /usr/local
+  - cd "$TRAVIS_BUILD_DIR/ex4/bats-core" && sudo ./install.sh /usr/local && bats --version
   - cd "$TRAVIS_BUILD_DIR/ex4" && bats test/t_task2.bats --tap
-#  - cat /tmp/output.log
+  - cat /tmp/output.log
 
 notifications:
   email:
